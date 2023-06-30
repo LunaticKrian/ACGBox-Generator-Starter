@@ -19,5 +19,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Accessors(chain = true)
 public class EntityProperties {
 
+    private String basicPackage;
+
 
 }

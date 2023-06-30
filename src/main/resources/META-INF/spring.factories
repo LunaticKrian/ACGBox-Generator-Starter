@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  wiki.csbox.generator.config.MySQLGeneratorAutoConfiguration
+  wiki.csbox.generator.config.MySQLGeneratorAutoConfiguration,\
+  wiki.csbox.generator.config.EntityGeneratorAutoConfiguration

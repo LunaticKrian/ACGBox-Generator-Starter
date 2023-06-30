@@ -1,4 +1,4 @@
-package wiki.csbox.generator.handler.strategy;
+package wiki.csbox.generator.handler.generator;
 
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
@@ -11,7 +11,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 import org.springframework.beans.factory.annotation.Value;
-import wiki.csbox.generator.handler.GeneratorStrategy;
 
 import java.util.Collections;
 import java.util.List;
@@ -21,7 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class MySQLGenerator implements GeneratorStrategy {
+public class MySQLGenerator {
     /**
      * 数据库连接配置信息
      */
@@ -46,7 +45,11 @@ public class MySQLGenerator implements GeneratorStrategy {
     @Value(value = "${csbox.generator.mysql.email:---}")
     private String email;
 
-    @Override
+    /**
+     * 根据数据表生成MVC架构和实体类
+     *
+     * @return boolean 代码生成是否成功
+     */
     public boolean generatorCode() {
         // 获取项目所在路径
         String path = System.getProperty("user.dir");
@@ -96,15 +99,5 @@ public class MySQLGenerator implements GeneratorStrategy {
                 .execute();
 
         return true;
-    }
-
-    @Override
-    public boolean generatorDataBase() {
-        return false;
-    }
-
-    @Override
-    public boolean generatorDataTable() {
-        return false;
     }
 }
